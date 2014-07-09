@@ -1,13 +1,11 @@
 from py2neo import neo4j, node, rel
+
 # Define the DB connection
 graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
 
 # Screw Indexes
 # Lets just create JSON formatted objects and then insert them later
 # Maybe store the returned objects in a list?
-
-# Screw Indexes
-
 def addHash(uuid, malhash, filename, family, confidence, source, source_type):
     return ({"uuid":uuid, "md5hash":malhash, "filename":filename, "description":family,"confidence":int(confidence), "source":source,
              "source_type":source_type})
@@ -39,7 +37,6 @@ intel_test = graph_db.create(
 )
 
 # Function to insert stuff into graph_db
-
 def insert_into_db(node_1, node_2, relationship_verb):
     return graph_db.create(node(node_1), node(node_2), rel(0, relationship_verb, 1))
     
